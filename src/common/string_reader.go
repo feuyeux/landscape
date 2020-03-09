@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/json"
-	"log"
 	"strings"
 )
 
@@ -21,7 +20,7 @@ func JsonPretty(result string) string {
 	var prettyJSON bytes.Buffer
 	err := json.Indent(&prettyJSON, []byte(result), "", "  ")
 	if err != nil {
-		log.Println("JSON parse error: ", err)
+		return result
 	}
 	pretty := string(prettyJSON.Bytes())
 	return pretty
